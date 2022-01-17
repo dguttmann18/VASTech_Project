@@ -1,0 +1,18 @@
+0#DatabaseQueue_DiskThresholdExceeded#Warning#A queue of database operations exceeded the DISK threshold.
+1#DatabaseQueue_LowThresholdExceeded#Warning#A queue of database operations exceeded the low threshold.
+2#DatabaseQueue_HighThresholdExceeded#Critical#A queue of database operations exceeded the high threshold.
+3#DatabaseQueue_Overflow#Fatal#A queue of database operations is overflowing, data is being discarded.
+4#DatabaseQueue_Stuck#Info#A queue of database operations is stuck i.e. it is non-empty, but no operations were processed to DB in the last few minutes.
+5#DatabaseQueue_RecentFailures#Warning#DBAgent operation failures occured in the last 24 hours in this DU; consult the DBAgent report for details.
+6#Host_MemoryLow#Warning#Amount of free memory on the host is below specified threshold.
+7#Host_CPUSlowDownAlarm#Critical#The host CPU is running at a critically low clock speed.
+8#Host_CPUSlowDownEvent#Info#The host CPU is running at a lower clock speed.
+9#Host_LowDiskSpace#Critical#The host is low on storage space.
+10#Host_HighTempEnvironmentAlarm#Warning#The inlet or ambient air temperature is above recommended levels.
+11#Memcached_ProcessNotStarted#Critical#Failed to start memcached process.
+12#Memcached_ProcessNotRunning#Critical#The memcached process is not running.
+13#Kafka_EventQueueOverflow#Critical#Event operation queue overflowing. Discarded overflowing events.
+14#Kafka_NullGateway#Critical#Failed to retrieve Kafka event queue gateway for one or more topics.
+15#Kafka_Communication_Failure#Critical#Failed to communicate with Kafka.
+16#VLANMaxTrafficThresholdViolation#Warning#Traffic on VLAN has exceeded threshold value.
+17#VLANMinTrafficThresholdViolation#Warning#Traffic on VLAN is below threshold value.
