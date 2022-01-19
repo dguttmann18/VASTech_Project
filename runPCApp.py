@@ -1,16 +1,21 @@
+import socket
 import sys
-import random
-import os
 
-f = open("alarms.txt", "r")
+while True:
+    # Create socket
+    soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-alarms = []
+    # Connect the socket to the port were the server is listening
+    server_address = ('localhost', 10000)
+    #print ('connecting to %s port %s' % server_address)
+    soc.connect(server_address)
 
-for x in f:
-    alarms.append(x.split("#"))
+    try:
+        # Send data
+        message = input()
+        print('sending "%s"' % message)
+        soc.sendto(message.encode(), server_address)
 
-r = random.randint(0, len(alarms) - 1)
-
-s = "python3 PC_App.py " + alarms[r][1]
-
-os.system(s)
+    finally:
+        print('closing socket')
+        soc.close()
