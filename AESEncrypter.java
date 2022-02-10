@@ -1,3 +1,7 @@
+package com.example.SMSApp;
+
+import android.util.Log;
+
 import java.security.Key;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +14,7 @@ public class AESEncrypter
 {
     private static final String ALGO = "AES";
     private byte[] keyValue;
+    private static final String TAG = AESEncrypter.class.getSimpleName();
 
     public AESEncrypter(String key)
     {
@@ -28,13 +33,24 @@ public class AESEncrypter
 
     public String decrypt(String encryptedData) throws Exception
     {
-        Key key = generateKey();
-        javax.crypto.Cipher c = javax.crypto.Cipher.getInstance(ALGO);
-        c.init(Cipher.DECRYPT_MODE, key);
-        byte[] decordedValue = java.util.Base64.getDecoder().decode(encryptedData);;
-        byte[] decValue = c.doFinal(decordedValue);
-        String decryptedValue = new String(decValue);
-        return decryptedValue;
+        try
+        {
+            Key key = generateKey();
+            javax.crypto.Cipher c = javax.crypto.Cipher.getInstance(ALGO);
+            c.init(Cipher.DECRYPT_MODE, key);
+            byte[] decodedValue = java.util.Base64.getDecoder().decode(encryptedData);
+            byte[] decValue = c.doFinal(decodedValue);
+            String decryptedValue = new String(decValue);
+            return decryptedValue;
+        }
+        catch(Exception e)
+        {
+            Log.d(TAG, "decoded value: I am here!");
+            Logger.getLogger(AESEncrypter.class.getName()).log(Level.SEVERE, null, e);
+            return "no message";
+        }
+
+
     }
 
     private Key generateKey() throws Exception
